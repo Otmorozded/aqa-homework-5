@@ -152,7 +152,7 @@ public class AnotherDateTest {
         $("[data-test-id='phone'] input").setValue("+7975");
         $("[data-test-id='agreement']").click();
         $(withText("Запланировать")).click();
-        $(byText("Номер телефона должен состоять из 11 цифр, начиная с +7")).shouldBe(visible);
+        $(byText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678")).shouldBe(visible);
 
     }
 
