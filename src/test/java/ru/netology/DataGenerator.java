@@ -11,15 +11,25 @@ public class DataGenerator {
     private DataGenerator() {
     }
 
+
+
     public static class Registration {
         private Registration() {
         }
+
 
         public static RegistrationInfo registrationInfo() {
             Faker faker = new Faker(new Locale("ru"));
             return new RegistrationInfo(faker.address().city(), faker.name().fullName(), faker.phoneNumber().phoneNumber());
 
         }
+
+        public static RegistrationFakeInfo registrationFakeInfo() {
+            Faker fakerEng = new Faker(new Locale("eng"));
+            return new RegistrationFakeInfo(fakerEng.address().city(), fakerEng.name().fullName());
+
+        }
+
 
 
         public static String getVisitDate(int plusDays) {
@@ -30,6 +40,17 @@ public class DataGenerator {
         }
 
     }
+
+    /*public static class RegistrationFake{
+        public RegistrationFake() {
+        }
+    }
+
+    public static RegistrationFakeInfo registrationFakeInfo(){
+        Faker fakerEng = new Faker(new Locale("eng"));
+        return new RegistrationFakeInfo(fakerEng.address().city());
+
+    }*/
 
 
 }
