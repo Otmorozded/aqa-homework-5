@@ -18,15 +18,15 @@ public class DataGenerator {
         }
 
 
-        public static RegistrationInfo registrationInfo() {
+        public static GetRegistrationInfo registrationInfo() {
             Faker faker = new Faker(new Locale("ru"));
-            return new RegistrationInfo(faker.address().city(), faker.name().fullName(), faker.phoneNumber().phoneNumber());
+            return new GetRegistrationInfo(faker.address().city(), faker.name().fullName(), faker.phoneNumber().phoneNumber());
 
         }
 
-        public static RegistrationFakeInfo registrationFakeInfo() {
+        public static GetRegistrationFakeInfo registrationFakeInfo() {
             Faker fakerEng = new Faker(new Locale("eng"));
-            return new RegistrationFakeInfo(fakerEng.address().city(), fakerEng.name().fullName());
+            return new GetRegistrationFakeInfo(fakerEng.address().city(), fakerEng.name().fullName());
 
         }
 
@@ -41,16 +41,7 @@ public class DataGenerator {
 
     }
 
-    /*public static class RegistrationFake{
-        public RegistrationFake() {
-        }
-    }
 
-    public static RegistrationFakeInfo registrationFakeInfo(){
-        Faker fakerEng = new Faker(new Locale("eng"));
-        return new RegistrationFakeInfo(fakerEng.address().city());
-
-    }*/
 
 
 }
