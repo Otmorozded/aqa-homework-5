@@ -12,36 +12,32 @@ public class DataGenerator {
     }
 
 
-
     public static class Registration {
         private Registration() {
         }
 
 
-        public static GetRegistrationInfo registrationInfo() {
+        public static RegistrationInfo getRegistrationInfo() {
             Faker faker = new Faker(new Locale("ru"));
-            return new GetRegistrationInfo(faker.address().city(), faker.name().fullName(), faker.phoneNumber().phoneNumber());
+            return new RegistrationInfo(faker.address().city(), faker.name().fullName(), faker.phoneNumber().phoneNumber());
 
         }
 
-        public static GetRegistrationFakeInfo registrationFakeInfo() {
+        public static RegistrationFakeInfo getRegistrationFakeInfo() {
             Faker fakerEng = new Faker(new Locale("eng"));
-            return new GetRegistrationFakeInfo(fakerEng.address().city(), fakerEng.name().fullName());
+            return new RegistrationFakeInfo(fakerEng.address().city(), fakerEng.name().fullName());
 
         }
-
 
 
         public static String getVisitDate(int plusDays) {
             LocalDate today = LocalDate.now();
-            DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            LocalDate newDate=today.plusDays(plusDays);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            LocalDate newDate = today.plusDays(plusDays);
             return formatter.format(newDate);
         }
 
     }
-
-
 
 
 }

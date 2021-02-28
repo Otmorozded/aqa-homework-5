@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 
-public class GetRegistrationInfo {
+public class RegistrationInfo {
 
     private final String city;
     private final String name;

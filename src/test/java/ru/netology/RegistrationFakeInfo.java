@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 
-public class GetRegistrationFakeInfo {
+public class RegistrationFakeInfo {
 
     private final String city;
     private final String name;

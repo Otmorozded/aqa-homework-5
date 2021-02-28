@@ -1,6 +1,5 @@
 package ru.netology;
 
-import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -23,7 +22,7 @@ public class AnotherDateTest {
     @Test
     void shouldTestCorrectForm() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
 
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
@@ -41,7 +40,7 @@ public class AnotherDateTest {
     @Test
     void shouldTestAnotherDate() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
 
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
@@ -69,8 +68,8 @@ public class AnotherDateTest {
     @Test
     void shouldFailWithWrongCity() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
-        GetRegistrationFakeInfo invalidUser = DataGenerator.Registration.registrationFakeInfo();
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
+        RegistrationFakeInfo invalidUser = DataGenerator.Registration.getRegistrationFakeInfo();
 
         $("[data-test-id='city'] input").setValue(invalidUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
@@ -88,8 +87,8 @@ public class AnotherDateTest {
     @Test
     void shouldFailWithWrongName() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
-        GetRegistrationFakeInfo invalidUser = DataGenerator.Registration.registrationFakeInfo();
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
+        RegistrationFakeInfo invalidUser = DataGenerator.Registration.getRegistrationFakeInfo();
 
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
@@ -105,15 +104,13 @@ public class AnotherDateTest {
     @Test
     void shouldFailWithoutAgreement() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
-
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
 
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(DataGenerator.Registration.getVisitDate(3));
         $("[data-test-id='name'] input").setValue(validUser.getName());
         $("[data-test-id='phone'] input").setValue(validUser.getPhone());
-
         $$("button").find(exactText("Запланировать")).click();
         $("[data-test-id=agreement].input_invalid .checkbox__text")
                 .shouldHave(exactText("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
@@ -122,8 +119,7 @@ public class AnotherDateTest {
     @Test
     void shouldFailWithEmptyCity() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
-
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
 
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(DataGenerator.Registration.getVisitDate(3));
@@ -138,15 +134,12 @@ public class AnotherDateTest {
     @Test
     void shouldFailWithEmptyPhone() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
-
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
 
         $("[data-test-id='city'] input").setValue(validUser.getCity());
-
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(DataGenerator.Registration.getVisitDate(3));
         $("[data-test-id='name'] input").setValue(validUser.getName());
-
         $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Запланировать")).click();
         $("[data-test-id=phone].input_invalid .input__sub")
@@ -156,8 +149,7 @@ public class AnotherDateTest {
     @Test
     void shouldFailWithEmptyName() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
-
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
 
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
@@ -170,14 +162,12 @@ public class AnotherDateTest {
     }
 
 
-
     //Тест упадет ,ошибка на форме. Форма принимает не полные телефонные номера
 
     @Test
     void shouldIncorrectPhone() {
 
-        GetRegistrationInfo validUser = DataGenerator.Registration.registrationInfo();
-        ;
+        RegistrationInfo validUser = DataGenerator.Registration.getRegistrationInfo();
 
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
